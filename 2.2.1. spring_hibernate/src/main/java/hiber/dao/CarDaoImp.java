@@ -8,34 +8,20 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
-
 @Repository
-public class UserDaoImp implements UserDao {
+public class CarDaoImp implements CarDao {
 
     @Autowired
     private SessionFactory sessionFactory;
-
-//   public User addCar(User user, Car car) {
-//      user.setCar(car);
-//      return user;
-//   }
-
     @Override
-    public void add(User user) {
-        sessionFactory.getCurrentSession().save(user);
-    }
-
-    @Override
-    public void addCar(Car car) {
+    public void add(Car car) {
         sessionFactory.getCurrentSession().save(car);
     }
 
-
     @Override
     @SuppressWarnings("unchecked")
-    public List<User> listUsers() {
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+    public List<Car> listCars() {
+        TypedQuery<Car> query=sessionFactory.getCurrentSession().createQuery("from Car");
         return query.getResultList();
     }
-
 }
