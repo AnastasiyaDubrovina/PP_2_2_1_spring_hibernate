@@ -19,8 +19,8 @@ public class User {
    @Column(name = "email")
    private String email;
 
-
-   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+   @OneToOne
+   @JoinColumn(name = "car_id", referencedColumnName = "id")
    private Car car;
 
    public User() {}
@@ -82,6 +82,12 @@ public class User {
 
    @Override
    public String toString() {
-      return car.getModel();
+      return "User{" +
+              "id=" + id +
+              ", firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", email='" + email + '\'' +
+              ", car=" + car +
+              '}';
    }
 }
